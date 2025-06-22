@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html lang="th">
-  <head>
-    <meta charset="UTF-8" />
-    <title>ทดสอบ Apps Script API</title>
-  </head>
-  <body>
-    <h1>เชื่อมต่อไปยัง Google Apps Script</h1>
-    <p id="output">กำลังโหลด...</p>
-
-    <script>
-      const url = "https://script.google.com/macros/s/AKfycbx9k3zuhg4WrSc1ZzI2cgkEKK1-qwW7dNZGyGYDnlCw1ujRz85N13TmR-bTDha9gMQv/exec";
-
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById("output").textContent = data.message;
-        })
-        .catch(err => {
-          document.getElementById("output").textContent = "เกิดข้อผิดพลาด: " + err;
-        });
-    </script>
-  </body>
-</html>
+fetch("https://script.google.com/macros/s/AKfycbx9k3zuhg4WrSc1ZzI2cgkEKK1-qwW7dNZGyGYDnlCw1ujRz85N13TmR-bTDha9gMQv/exec")
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
