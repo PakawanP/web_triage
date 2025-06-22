@@ -1,5 +1,42 @@
-<script>
-  fetch('https://script.google.com/macros/s/AKfycbzeFyScJeBtKb-i8dXargrmxWqF3v6fpm0_HwUJ1bbNhiFbLP8qYoQiQoUOOYS_X4xw/exec')
-    .then(res => res.json())
-    .then(data => document.body.innerHTML = data.message);
-</script>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Page เชื่อม Google Apps Script</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 3rem;
+      background: #f4f4f4;
+    }
+    .box {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>ข้อความจาก Apps Script</h1>
+    <p id="output">กำลังโหลด...</p>
+  </div>
+
+  <script>
+    const url = "https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzeFyScJeBtKb-i8dXargrmxWqF3v6fpm0_HwUJ1bbNhiFbLP8qYoQiQoUOOYS_X4xw/exec"; // <= ใส่ URL ของคุณที่นี่
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("output").textContent = data.message;
+      })
+      .catch(err => {
+        document.getElementById("output").textContent = "เกิดข้อผิดพลาด: " + err;
+      });
+  </script>
+</body>
+</html>
