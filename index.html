@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <base target="_top">
-  </head>
-  <body style="display: flex; align-items: center; justify-content: center; height: 100vh;">
-    <a href="https://script.google.com/macros/s/AKfycbzeFyScJeBtKb-i8dXargrmxWqF3v6fpm0_HwUJ1bbNhiFbLP8qYoQiQoUOOYS_X4xw/exec"
-       target="_blank"
-       style="font-size: 20px; padding: 12px 24px; background-color: #4285F4; color: white; text-decoration: none; border-radius: 8px;">
-       เปิดแบบฟอร์ม
-    </a>
-  </body>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>รับข้อมูลจาก Google Apps Script</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>ข้อความจาก Apps Script</h2>
+    <p id="output">กำลังโหลด...</p>
+  </div>
+
+  <script>
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbzeFyScJeBtKb-i8dXargrmxWqF3v6fpm0_HwUJ1bbNhiFbLP8qYoQiQoUOOYS_X4xw/exec";
+
+    fetch(scriptUrl)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("output").textContent = data.message;
+      })
+      .catch(error => {
+        document.getElementById("output").textContent = "เกิดข้อผิดพลาด: " + error;
+      });
+  </script>
+</body>
 </html>
